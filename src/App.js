@@ -29,10 +29,24 @@ function App() {
     setTasks(tasks.filter((task) => task.id !== id))
   }
 
+  // Toggle reminder
+  function toggleReminder(id){
+    setTasks(tasks.map((task) => (
+      task.id === id?
+      {
+      id: task.id,
+      text: task.text,
+      day: task.day,
+      reminder: (!task.reminder),
+      } 
+      : task
+    )))
+  }
+
   return (
     <div className='container'>
       <Header />
-      <Tasks tasks={tasks} delete={deleteTask}/>
+      {tasks.length > 0 ? <Tasks tasks={tasks} delete={deleteTask} toggle={toggleReminder}/> : "No active tasks. Well done!" }
     </div>
   )
 }
