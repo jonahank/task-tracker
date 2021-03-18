@@ -34,9 +34,7 @@ function App() {
     setTasks(tasks.map((task) => (
       task.id === id?
       {
-      id: task.id,
-      text: task.text,
-      day: task.day,
+      ...task,
       reminder: (!task.reminder),
       } 
       : task
