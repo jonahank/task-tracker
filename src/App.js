@@ -1,7 +1,12 @@
 //npm run build (to update the build folder for production)
+//npm i react-router-dom (for router)
+//npm i json-server (i think)
 
 import { useState, useEffect } from 'react'
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import About from './components/About';
 import AddTask from './components/AddTask';
+import Footer from './components/Footer';
 import Header from './components/Header'
 import Tasks from './components/Tasks'
 
@@ -96,11 +101,23 @@ function App() {
   }
 
   return (
+    <Router>
     <div className='container'>
-      <Header toggleOn={showAddTask} showToggle={toggleAddTask} />
-      {showAddTask ? <AddTask onAdd={addTask}/> : ''}
-      {tasks.length > 0 ? <Tasks tasks={tasks} delete={deleteTask} toggle={toggleReminder}/> : "No active tasks. Well done!" }
+
+      <Route path='/' exact render={(props) => 
+        (
+        <>
+          <Header toggleOn={showAddTask} showToggle={toggleAddTask} />
+          {showAddTask ? <AddTask onAdd={addTask}/> : ''}
+          {tasks.length > 0 ? <Tasks tasks={tasks} delete={deleteTask} toggle={toggleReminder}/> : "No active tasks. Well done!" }  
+        </>
+        )}
+       />
+      <Route path='/about' component={About} />
+      
+      <Footer />
     </div>
+    </Router>
   )
 }
 
