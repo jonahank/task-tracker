@@ -11,7 +11,10 @@ const Header = (props) => {
 	return (
     <header className='header'>
       <h1>{props.title}</h1>
-			<Button color='green' text='Add!' onClick= {onClick}/>
+			<Button 
+			color='green' 
+			text={props.toggleOn ? 'Minimize' : 'Add'}
+			onClick= {props.showToggle}/>
     </header>
     )
 }
