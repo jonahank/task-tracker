@@ -9,20 +9,20 @@ function App() {
   const [tasks, setTasks] = useState([
     {
     id: 1,
-    text: 'abc',
-    day: 'Monday',
+    text: 'Update to nicer layout',
+    day: 'End of March',
     reminder: true,
     },
     {
     id: 2,
-    text: 'def',
-    day: 'Tuesday',
+    text: 'Add algorithm maze generator',
+    day: 'Mid April',
     reminder: true,
     },
     {
     id: 3,
-    text: 'ghi',
-    day: 'Friday',
+    text: 'Legacy snake game',
+    day: 'End of April',
     reminder: false,
     },
   ]);
