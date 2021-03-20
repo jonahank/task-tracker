@@ -1,6 +1,6 @@
 //npm run build (to update the build folder for production)
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import AddTask from './components/AddTask';
 import Header from './components/Header'
 import Tasks from './components/Tasks'
@@ -8,26 +8,25 @@ import Tasks from './components/Tasks'
 function App() {
   const [showAddTask, setShowAddTask] = useState(false);
 
-  const [tasks, setTasks] = useState([
-    {
-    id: 1,
-    text: 'Update to nicer layout',
-    day: 'End of March',
-    reminder: true,
-    },
-    {
-    id: 2,
-    text: 'Add algorithm maze generator',
-    day: 'Mid April',
-    reminder: true,
-    },
-    {
-    id: 3,
-    text: 'Legacy snake game',
-    day: 'End of April',
-    reminder: false,
-    },
-  ]);
+  const [tasks, setTasks] = useState([]);
+
+  useEffect(()=>{  // runs when the page loads
+    const getTasks = async () => {
+      const tasksFromServer = await fetchTasks();
+      setTasks(tasksFromServer);
+    }
+
+    getTasks();
+  }, [] ) // we take an empty array as a "dependency array" if we want to pass in parameters
+
+  // Fetch tasks from JSON-server
+  const fetchTasks = async () =>{
+      const res = await fetch('http://localhost:5001/tasks'); // res is = response
+      const data = await res.json();
+
+      return data;
+    }
+
 
   // Add a task
   function addTask(task){
