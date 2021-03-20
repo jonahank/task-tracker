@@ -110,12 +110,12 @@ function App() {
           <Header toggleOn={showAddTask} showToggle={toggleAddTask} />
           {showAddTask ? <AddTask onAdd={addTask}/> : ''}
           {tasks.length > 0 ? <Tasks tasks={tasks} delete={deleteTask} toggle={toggleReminder}/> : "No active tasks. Well done!" }  
+          <Footer />
         </>
         )}
        />
       <Route path='/about' component={About} />
       
-      <Footer />
     </div>
     </Router>
   )

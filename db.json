@@ -10,13 +10,19 @@
       "id": 2,
       "text": "Add algorithm maze generator",
       "day": "Mid April",
-      "reminder": true
+      "reminder": false
     },
     {
       "id": 3,
       "text": "Legacy snake game",
       "day": "End of April",
-      "reminder": true
+      "reminder": false
+    },
+    {
+      "text": "Add up/down priority",
+      "day": "End of March",
+      "reminder": true,
+      "id": 4
     }
   ]
 }
