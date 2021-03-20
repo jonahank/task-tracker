@@ -25,28 +25,66 @@ function App() {
       const data = await res.json();
 
       return data;
-    }
+  }
 
+  const fetchTask = async (id) =>{
+      const res = await fetch(`http://localhost:5001/tasks/${id}`); // res is = response
+      const data = await res.json();
+
+      return data;
+  }
+
+  
 
   // Add a task
-  function addTask(task){
-    const id = Math.floor(Math.random() * 10000) + 1;
+  const addTask = async (task) => {
+    const res = await fetch('http://localhost:5001/tasks', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(task),
+    })
+
+    const newTask = await res.json();
+
+    setTasks([...tasks, newTask]);
+
+    //old local add. It adds id auto in json server
+    /* const id = Math.floor(Math.random() * 10000) + 1;
     const newTask = {id, ...task};
-    setTasks([...tasks,newTask]);
+    setTasks([...tasks,newTask]); */
   }
 
   // Delete a Task
-  const deleteTask = (id) => {
+  const deleteTask = async (id) => {
+    await fetch(`http://localhost:5001/tasks/${id}`, {
+      method: 'DELETE'
+    });
+
     setTasks(tasks.filter((task) => task.id !== id));
   }
 
   // Toggle reminder
-  function toggleReminder(id){
+  const toggleReminder = async (id) =>{
+    const taskToToggle = await fetchTask(id);
+    const updatedTask = {...taskToToggle, reminder: !(taskToToggle.reminder)}
+
+    const res = await fetch(`http://localhost:5001/tasks/${id}` ,{
+      method: 'PUT',
+      headers:{
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(updatedTask),
+    })
+
+    const data = await res.json();
+
     setTasks(tasks.map((task) => (
       task.id === id?
       {
       ...task,
-      reminder: !(task.reminder),
+      reminder: (data.reminder),
       } 
       : task
     )))
