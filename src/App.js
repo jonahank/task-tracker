@@ -26,7 +26,7 @@ function App() {
 
   // Fetch tasks from JSON-server
   const fetchTasks = async () =>{
-      const res = await fetch('http://localhost:5001/tasks'); // res is = response
+      const res = await fetch('db.json'); // res is = response
       const data = await res.json();
 
       return data;
