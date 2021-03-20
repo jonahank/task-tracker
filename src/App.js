@@ -1,3 +1,5 @@
+//npm run build (to update the build folder for production)
+
 import { useState } from 'react'
 import AddTask from './components/AddTask';
 import Header from './components/Header'
