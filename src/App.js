@@ -119,7 +119,7 @@ function App() {
     <Router>
     <div className='container'>
 
-      <Route path='/' exact render={(props) => 
+      <Route path='/task-tracker' exact render={(props) => 
         (
         <>
           <Header toggleOn={showAddTask} showToggle={toggleAddTask} />

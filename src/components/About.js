@@ -16,7 +16,7 @@ const About = () => {
 
             </p>
             <br/> <br/> <br/> <br/> <br/>
-            <Link className='btn' style={{background:'grey'}} to="/">Go Back</Link>
+            <Link className='btn' style={{background:'grey'}} to="/task-tracker">Go Back</Link>
         </div> // we could use <a> tags, but then the page loads.
     )
 }
