@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 const Footer = () => {
     return (
         <footer>
-            <p>2021</p>
+            <p>Changes only affect each session</p>
             <Link to="/about">About</Link>
         </footer>
     )
